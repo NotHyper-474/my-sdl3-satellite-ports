@@ -4,20 +4,18 @@ vcpkg_from_github(
     REF ed5ca0e09ddc2b77f05498023262d622ea678946 # "release-${VERSION}"
     SHA512 0c90b4eb80598bb9f9564bfabd3e430bd2b5909e9191d462907347071f8ae793cbeeb6e977efb7188787de966626f77f9cce77f8fb5c4ea3d56ac2a875127871
     HEAD_REF main
-    PATCHES
-        fix-vendor.patch
 )
 
 vcpkg_check_features(OUT_FEATURE_OPTIONS FEATURE_OPTIONS
     FEATURES
-        harfbuzz SDL3TTF_HARFBUZZ
+        harfbuzz SDLTTF_HARFBUZZ
 )
 
 vcpkg_cmake_configure(
     SOURCE_PATH "${SOURCE_PATH}"
     OPTIONS
-        -DSDL3TTF_VENDORED=OFF
-        -DSDL3TTF_SAMPLES=OFF
+        -DSDLTTF_VENDORED=OFF
+        -DSDLTTF_SAMPLES=OFF
         ${FEATURE_OPTIONS}
 )
 

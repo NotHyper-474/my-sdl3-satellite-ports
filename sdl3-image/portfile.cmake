@@ -4,28 +4,25 @@ vcpkg_from_github(
     REF "preview-${VERSION}"
     SHA512 e139fd9474213757f473ca96cb7df78e6b122ac1a0f8b88e66d28955b8ee0390f83ee14dfe4f188aa4ba14b812c5522ce366e61a00609a3079930d68d8233921
     HEAD_REF main
-    PATCHES
-        fix-vendor.patch
-        #fix-findwebp.patch
 )
 
 vcpkg_check_features(
     OUT_FEATURE_OPTIONS FEATURE_OPTIONS
     FEATURES
-        libjpeg-turbo SDL3IMAGE_JPG
-        libwebp       SDL3IMAGE_WEBP
-        tiff          SDL3IMAGE_TIF
+        libjpeg-turbo SDLIMAGE_JPG
+        libwebp       SDLIMAGE_WEBP
+        tiff          SDLIMAGE_TIF
 )
 
 vcpkg_cmake_configure(
     SOURCE_PATH "${SOURCE_PATH}"
     OPTIONS
         ${FEATURE_OPTIONS}
-        -DSDL3IMAGE_BACKEND_IMAGEIO=OFF
-        -DSDL3IMAGE_BACKEND_STB=OFF
-        -DSDL3IMAGE_DEPS_SHARED=OFF
-        -DSDL3IMAGE_SAMPLES=OFF
-        -DSDL3IMAGE_VENDORED=OFF
+        -DSDLIMAGE_BACKEND_IMAGEIO=OFF
+        -DSDLIMAGE_BACKEND_STB=OFF
+        -DSDLIMAGE_DEPS_SHARED=OFF
+        -DSDLIMAGE_SAMPLES=OFF
+        -DSDLIMAGE_VENDORED=OFF
 )
 
 vcpkg_cmake_install()
